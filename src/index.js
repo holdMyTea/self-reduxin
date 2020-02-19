@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import { createStore } from '../selfLibs/redux'
+import { Provider } from '../selfLibs/react-redux'
 
 import countReducer from './reducers/countReducer'
 
@@ -11,15 +12,23 @@ const store = createStore({
   count: countReducer
 })
 
-store.subscribe(() => console.log(store.getState()))
+// store.subscribe(() => console.log(store.getState().count))
 
-setInterval(() =>
-  store.dispatch({
-    type: 'COUNT_INCREMENT'
-  }),
-2000)
+// setInterval(() =>
+//   store.dispatch({
+//     type: 'COUNT_INCREMENT'
+//   }),
+// 200)
+
+// setInterval(() =>
+//   store.dispatch({
+//     type: 'COUNT_DECREMENT'
+//   }),
+// 500)
 
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )

@@ -1,7 +1,21 @@
 import React from 'react'
+import t from 'prop-types'
 
-const App = () => (
-  <h2>&apos;Sup, bro!</h2>
+import { connect } from '../selfLibs/react-redux'
+
+const App = ({ count }) => (
+  <>
+    <h2>&apos;Sup, bro!</h2>
+    <span>{count}</span>
+  </>
 )
 
-export default App
+App.propTypes = {
+  count: t.number
+}
+
+export default connect(App)(
+  state => ({
+    count: state.count.count
+  })
+)
