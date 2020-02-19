@@ -12,19 +12,9 @@ const store = createStore({
   count: countReducer
 })
 
-// store.subscribe(() => console.log(store.getState().count))
+store.subscribe(() => console.log(store.getState().count))
 
-// setInterval(() =>
-//   store.dispatch({
-//     type: 'COUNT_INCREMENT'
-//   }),
-// 200)
-
-// setInterval(() =>
-//   store.dispatch({
-//     type: 'COUNT_DECREMENT'
-//   }),
-// 500)
+// TODO: check with the outside dispatch here
 
 ReactDOM.render(
   <Provider store={store}>

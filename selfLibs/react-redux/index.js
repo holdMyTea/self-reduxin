@@ -7,21 +7,22 @@ class Provider extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      storeValue: props.store
+      state: props.store.getState(),
+      dispatch: props.store.dispatch
     }
   }
 
   componentDidMount () {
     this.props.store.subscribe(
       () => this.setState({
-        storeValue: this.props.store
+        state: this.props.store.getState()
       })
     )
   }
 
   render () {
     return (
-      <StoreContext.Provider value={this.state.storeValue}>
+      <StoreContext.Provider value={this.state}>
         { this.props.children }
       </StoreContext.Provider>
     )
@@ -39,26 +40,24 @@ Provider.propTypes = {
 
 const connect = WrappedComponent =>
   (mapStateToProps, mapDispatchToProps) =>
-    props => {
-      return (
-        <StoreContext.Consumer>
-          {
-            store => {
-              const stateProps = mapStateToProps && mapStateToProps(store.getState(), props)
-              const dispatchProps = mapDispatchToProps && mapDispatchToProps(store.dispatch, props)
+    props => (
+      <StoreContext.Consumer>
+        {
+          store => {
+            const stateProps = mapStateToProps && mapStateToProps(store.state, props)
+            const dispatchProps = mapDispatchToProps && mapDispatchToProps(store.dispatch, props)
 
-              return (
-                <WrappedComponent
-                  {...props}
-                  {...stateProps}
-                  {...dispatchProps}
-                />
-              )
-            }
+            return (
+              <WrappedComponent
+                {...props}
+                {...stateProps}
+                {...dispatchProps}
+              />
+            )
           }
-        </StoreContext.Consumer>
-      )
-    }
+        }
+      </StoreContext.Consumer>
+    )
 
 export {
   Provider,
