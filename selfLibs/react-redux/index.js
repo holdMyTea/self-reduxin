@@ -13,11 +13,15 @@ class Provider extends React.Component {
   }
 
   componentDidMount () {
-    this.props.store.subscribe(
+    this.unsubscribe = this.props.store.subscribe(
       () => this.setState({
         state: this.props.store.getState()
       })
     )
+  }
+
+  componentWillUnmount () {
+    this.unsubscribe()
   }
 
   render () {
