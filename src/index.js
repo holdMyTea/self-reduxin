@@ -5,6 +5,7 @@ import { createStore } from '../selfLibs/redux'
 import { Provider } from '../selfLibs/react-redux'
 
 import countReducer from './reducers/countReducer'
+import { decrement } from './actions/countActions'
 
 import App from './App'
 
@@ -14,7 +15,10 @@ const store = createStore({
 
 store.subscribe(() => console.log(store.getState().count))
 
-// TODO: check with the outside dispatch here
+setInterval(
+  () => store.dispatch(decrement()),
+  2000
+)
 
 ReactDOM.render(
   <Provider store={store}>

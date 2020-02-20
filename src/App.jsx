@@ -9,6 +9,7 @@ const App = ({ count, onClick }) => (
   <>
     <h2>&apos;Sup, bro!</h2>
     <span>{count}</span>
+    <br />
     <button onClick={onClick}>+</button>
   </>
 )
@@ -18,11 +19,14 @@ App.propTypes = {
   onClick: t.func.isRequired
 }
 
+const mapStateToProps = state => ({
+  count: state.count.count
+})
+const mapDispatchToProps = dispatch => ({
+  onClick: () => dispatch(increment())
+})
+
 export default connect(App)(
-  state => ({
-    count: state.count.count
-  }),
-  dispatch => ({
-    onClick: () => dispatch(increment())
-  })
+  mapStateToProps,
+  mapDispatchToProps
 )
