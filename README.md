@@ -1,9 +1,2 @@
-# My Basic React Project Template
-~~as if GitHub haven't had too many of them already~~
-
-Just wanted to try setting this up by myslef w/o CRA, to see what's behind it.
-
-It includes (minimalistic):
-+ WebPack config
-+ Babel config
-+ ESLint config
+# self-reduxin'
+My attempt to create a simple sample implementation of `redux` and `react-redux`. Just to better understand how it works from inside and for fun, ofc.

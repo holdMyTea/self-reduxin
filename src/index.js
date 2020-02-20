@@ -9,12 +9,15 @@ import { decrement } from './actions/countActions'
 
 import App from './App'
 
+// creating a store with a single reducer
 const store = createStore({
   count: countReducer
 })
 
+// subscribing to store update for transparency
 store.subscribe(() => console.log(store.getState().count))
 
+// and dispatching a decrement on interval for interactivity
 setInterval(
   () => store.dispatch(decrement()),
   2000
