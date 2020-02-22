@@ -1,20 +1,20 @@
 import React from 'react'
 import t from 'prop-types'
 
-import { connect } from '../selfLibs/react-redux'
+import { connect } from '../../selfLibs/react-redux'
 
-import { increment } from './actions/countActions'
+import { increment } from '../actions/countActions'
 
-const App = ({ count, onClick }) => (
-  <>
-    <h2>&apos;Sup, bro!</h2>
+const ConnectSample = ({ count, onClick }) => (
+  <div className='column'>
+    <h2>connect()() sample</h2>
     <span>{count}</span>
     <br />
     <button onClick={onClick}>+</button>
-  </>
+  </div>
 )
 
-App.propTypes = {
+ConnectSample.propTypes = {
   count: t.number.isRequired,
   onClick: t.func.isRequired
 }
@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
   onClick: () => dispatch(increment())
 })
 
-export default connect(App)(
+export default connect(ConnectSample)(
   mapStateToProps,
   mapDispatchToProps
 )

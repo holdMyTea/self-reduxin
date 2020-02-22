@@ -7,7 +7,8 @@ import { Provider } from '../selfLibs/react-redux'
 import countReducer from './reducers/countReducer'
 import { decrement } from './actions/countActions'
 
-import App from './App'
+import ConnectSample from './components/ConnectSample'
+import HooksSample from './components/HooksSample'
 
 // creating a store with a single reducer
 const store = createStore({
@@ -25,7 +26,8 @@ setInterval(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <ConnectSample />
+    <HooksSample />
   </Provider>,
   document.getElementById('root')
 )

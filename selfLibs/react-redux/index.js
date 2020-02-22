@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import t from 'prop-types'
 
 // React.Context singleton for passing store down the React tree
@@ -81,7 +81,26 @@ const connect = WrappedComponent =>
       </StoreContext.Consumer>
     )
 
+/**
+ * Runs a selector agains the current store state
+ * @param {function} selector
+ */
+const useSelector = selector => selector(useContext(StoreContext).state)
+
+/**
+ * Returns `dispatch` from the store.
+ */
+const useDispatch = () => useContext(StoreContext).dispatch
+
+/**
+ * Returns `store`.
+ */
+const useStore = () => useContext(StoreContext)
+
 export {
   Provider,
-  connect
+  connect,
+  useSelector,
+  useDispatch,
+  useStore
 }
