@@ -5,13 +5,13 @@ import { connect } from '../../selfLibs/react-redux'
 
 import { increment } from '../actions/countActions'
 
+import Counter from './Counter'
+
 const ConnectSample = ({ count, onClick }) => (
-  <div className='column'>
-    <h2>connect()() sample</h2>
-    <span>{count}</span>
-    <br />
-    <button onClick={onClick}>+</button>
-  </div>
+  <Counter
+    count={count}
+    onClick={onClick}
+    title='connect()() sample'/>
 )
 
 ConnectSample.propTypes = {
